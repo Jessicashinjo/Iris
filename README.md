@@ -1,2 +1,2 @@
 # Iris
-Garden Monitoring with a Particle
+Plant Monitoring with sensors using a Particle
