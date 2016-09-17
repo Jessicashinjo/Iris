@@ -1,5 +1,7 @@
+from datetime import datetime, timedelta, time
 import json
 from django.http import HttpResponse
+from django.utils import timezone
 from rest_framework import viewsets
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -10,15 +12,27 @@ from plant_info.serializers import MoistureSensorSerializer, TemperatureSensorSe
 
 class MoistureSensorView(viewsets.ModelViewSet):
     model = MoistureSensor
-    queryset = MoistureSensor.objects.all()
     serializer_class = MoistureSensorSerializer
+
+    def get_queryset(self):
+        queryset = MoistureSensor.objects.all()
+        since_date = self.request.query_params.get('current_date', None)
+        if since_date is not None:
+            compare_date = timezone.now() - timedelta(days=int(since_date))
+            queryset = queryset.filter(published_date__gt=compare_date)
+        return queryset
+            # MoistureSensor.objects.order_by('-published_date').filter(
+            #     published_date__gte=timezone.now()
+            # )
+
+    # query params since = date
 
 class TemperatureSensorView(viewsets.ModelViewSet):
     model = TemperatureSensor
-    queryset = TemperatureSensor.objects.all()
     serializer_class = TemperatureSensorSerializer
+    queryset = TemperatureSensor.objects.all()
 
 class LightSensorView(viewsets.ModelViewSet):
     model = LightSensor
-    queryset = LightSensor.objects.all()
     serializer_class = LightSensorSerializer
+    queryset = LightSensor.objects.all()
