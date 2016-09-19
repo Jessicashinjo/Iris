@@ -5,14 +5,22 @@
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <title>Iris</title>
       <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+      <link rel="stylesheet" href="style.css">
     </head>
     <body>
         <div ng-app='Iris'>
+            <h1>Test</h1>
             <div ng-view></div>
         </div>
 
 
       <script src="bower_components/angular/angular.min.js"></script>
       <script src="bower_components/angular-route/angular-route.min.js"></script>
+      <script src="node_modules/chart.js/dist/Chart.bundle.min.js"></script>
+      <script src="dashboard/dashboard.js"></script>
+      <script src="dashboard/factories/rootFactory.js"></script>
+      <!-- <script src="dashboard/factories/sensorFactory.js"></script> -->
+      <script src="dashboard/configs/dashboard.configs.js"></script>
+      <script src="dashboard/controllers/chart.controller.js"></script>
     </body>
 </html>
