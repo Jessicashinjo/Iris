@@ -154,7 +154,7 @@ Iris
                         pointStyle: 'circle',
                         pointHitRadius: 10,
                         data: $scope.temperatureValues,
-                        spanGaps: false,
+                        spanGaps: false
                     }
                 ]
             };
