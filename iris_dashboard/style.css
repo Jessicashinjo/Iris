@@ -13,6 +13,14 @@ body {
 }
 
 #charts {
-  max-width: 300px;
+  max-width: 800px;
   max-height: 300px;
+}
+
+#calendarDisplay {
+  max-width: 300px;
+  max-height: 200px;
+  display: block;
+  margin-right: 10%;
+
 }
