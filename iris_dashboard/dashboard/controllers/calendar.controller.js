@@ -5,6 +5,16 @@ Iris
         var d = date.getDate();
         var m = date.getMonth();
         var y = date.getFullYear();
+        $scope.noteBox = '';
+
+        // $scope.clearNoteBox = () => {
+        //     console.log("clear button");
+        //     $scope.noteBox = ''
+        // }
+
+        $scope.addToCalendar = function(noteInfo){
+            console.log(noteInfo)
+        }
 
         $scope.changeTo = 'Hungarian';
         /* event source that pulls from google.com */
@@ -111,26 +121,27 @@ Iris
             eventClick: $scope.alertOnEventClick,
             eventDrop: $scope.alertOnDrop,
             eventResize: $scope.alertOnResize,
-            eventRender: $scope.eventRender
+            eventRender: $scope.eventRender,
           }
         };
 
-        $scope.changeLang = function() {
-          if($scope.changeTo === 'Hungarian'){
-            $scope.uiConfig.calendar.dayNames = ["Vasárnap", "Hétfő", "Kedd", "Szerda", "Csütörtök", "Péntek", "Szombat"];
-            $scope.uiConfig.calendar.dayNamesShort = ["Vas", "Hét", "Kedd", "Sze", "Csüt", "Pén", "Szo"];
-            $scope.changeTo= 'English';
-          } else {
-            $scope.uiConfig.calendar.dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-            $scope.uiConfig.calendar.dayNamesShort = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-            $scope.changeTo = 'Hungarian';
-          }
-        };
+        // $scope.changeLang = function() {
+        //   if($scope.changeTo === 'Hungarian'){
+        //     $scope.uiConfig.calendar.dayNames = ["Vasárnap", "Hétfő", "Kedd", "Szerda", "Csütörtök", "Péntek", "Szombat"];
+        //     $scope.uiConfig.calendar.dayNamesShort = ["Vas", "Hét", "Kedd", "Sze", "Csüt", "Pén", "Szo"];
+        //     $scope.changeTo= 'English';
+        //   } else {
+        //     $scope.uiConfig.calendar.dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+        //     $scope.uiConfig.calendar.dayNamesShort = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+        //     $scope.changeTo = 'Hungarian';
+        //   }
+        // };
         /* event sources array*/
         $scope.eventSources = [$scope.events, $scope.eventsF];
-        $scope.eventSources2 = [$scope.calEventsExt, $scope.eventsF, $scope.events];
+        // $scope.eventSources2 = [$scope.calEventsExt, $scope.eventsF, $scope.events];
 
-        // angular.module('ui.bootstrap.demo').controller('DatepickerPopupDemoCtrl', function ($scope) {
+
+        // Mini popout calendar and text input box
               $scope.today = function() {
                 $scope.dt = new Date();
               };
@@ -170,6 +181,7 @@ Iris
 
               $scope.open1 = function() {
                 $scope.popup1.opened = true;
+                console.log("this opened")
               };
 
               $scope.open2 = function() {
@@ -188,9 +200,9 @@ Iris
                 opened: false
               };
 
-              $scope.popup2 = {
-                opened: false
-              };
+            //   $scope.popup2 = {
+            //     opened: false
+            //   };
 
               var tomorrow = new Date();
               tomorrow.setDate(tomorrow.getDate() + 1);
