@@ -7,8 +7,8 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.reverse import reverse
 
-from plant_info.models import MoistureSensor, TemperatureSensor, LightSensor
-from plant_info.serializers import MoistureSensorSerializer, TemperatureSensorSerializer, LightSensorSerializer
+from plant_info.models import MoistureSensor, TemperatureSensor, LightSensor, Notes
+from plant_info.serializers import MoistureSensorSerializer, TemperatureSensorSerializer, LightSensorSerializer, NotesSerializer
 
 class MoistureSensorView(viewsets.ModelViewSet):
     model = MoistureSensor
@@ -45,3 +45,8 @@ class LightSensorView(viewsets.ModelViewSet):
             compare_date = timezone.now() - timedelta(days=int(since_date))
             queryset = queryset.filter(published_date__gt=compare_date)
         return queryset
+
+class NotesView(viewsets.ModelViewSet):
+    model = Notes
+    serializer_class = NotesSerializer
+    queryset = Notes.objects.all()
