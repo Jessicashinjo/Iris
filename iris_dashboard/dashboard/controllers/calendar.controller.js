@@ -27,7 +27,7 @@ Iris
 
         $scope.populateCalendar = function (notes) {
             notes.data.forEach( (note) => {
-                $scope.events.push({note_id: note.id, title: note.note_content, start: new Date(note.note_date)})
+                $scope.events.push({note_id: note.id, title: note.note_content, start: new Date(note.note_date), allDay: true})
             })
             // console.log($scope.events)
         }
@@ -36,7 +36,7 @@ Iris
             console.log(selectedDate)
             $http.post(`${irisAPIUrl}/notes/`, {note_content: noteInfo,note_date: selectedDate})
               .then(res => {
-                  $scope.events.push({title: res.data.note_content, start: new Date(res.data.note_date)})
+                  $scope.events.push({title: res.data.note_content, start: new Date(res.data.note_date), allDay: true})
                 console.log("res notes: ", res );
                 console.log("events", $scope.events)
                 $timeout()
@@ -81,9 +81,13 @@ Iris
         $scope.alertOnEventClick = function( date, jsEvent, view){
             console.log("event clicked", date.title)
             console.log("event date", date.start._d)
-            console.log("jsEvent",jsEvent)
+            console.log("event date id", date)
+            // console.log("jsEvent",jsEvent)
             $scope.alertMessage = (date.title + ' was clicked ');
+            $scope.eventTitle = date.title;
+            $scope.eventDate = date.start._d.toLocaleDateString();
         };
+
         /* alert on Drop */
          $scope.alertOnDrop = function(event, delta, revertFunc, jsEvent, ui, view){
             console.log("event delta", view)
