@@ -18,20 +18,20 @@ body {
 }
 
 #calendarDisplay {
-  max-width: 400px;
+  max-width: 500px;
   max-height: 450px;
   display: block;
-  margin-right: 10%;
+  margin-right: 5%;
 }
 
 #calendarContainer {
-  max-width: 300px;
+  max-width: 400px;
   max-height: 400px;
   display: block;
-  margin-right: 10%;
+  margin-right: 5%;
 }
 
 #miniCalendar {
   display: block;
-  padding-top: 30%;
+  padding-top: 10%;
 }
