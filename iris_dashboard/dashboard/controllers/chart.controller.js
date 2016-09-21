@@ -12,17 +12,17 @@ Iris
             root => {
                 $http.get(`${root.moisture}`)
                     .then(res => {
-                        console.log("moisture res: ", res.data );
+                        // console.log("moisture res: ", res.data );
                         $scope.moisture = res.data;
                         $scope.moistureDates = getLabels(res.data);
                         $scope.moistureValues = getMoistureValues(res.data);
                         moistureChart();
-                        console.log("moistureDates", $scope.moistureDates);
-                        console.log("moistureValues", $scope.moistureValues);
+                        // console.log("moistureDates", $scope.moistureDates);
+                        // console.log("moistureValues", $scope.moistureValues);
                 });
                 $http.get(`${root.temperature}`)
                     .then(res => {
-                        console.log("temperature res: ", res.data );
+                        // console.log("temperature res: ", res.data );
                         $scope.temperature = res.data
                         $scope.temperatureDates = getLabels(res.data)
                         $scope.temperatureValues = getTemperatureValues(res.data);
@@ -30,12 +30,12 @@ Iris
                     });
                 $http.get(`${root.light}`)
                     .then(res => {
-                        console.log("light res: ", res.data );
+                        // console.log("light res: ", res.data );
                         $scope.light = res.data
                         $scope.lightDates = getLabels(res.data)
                         $scope.lightValues = getLightValues(res.data);
                         lightChart();
-                        console.log("light values", $scope.lightValues)
+                        // console.log("light values", $scope.lightValues)
                     });
             $timeout();
           },

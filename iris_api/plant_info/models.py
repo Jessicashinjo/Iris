@@ -27,3 +27,10 @@ class LightSensor(models.Model, UtilityFunctions):
 
     def __str__(self):
         return '{}: {}'.format(self.event_type, self.light_value)
+
+class Notes(models.Model):
+    note_content = models.CharField(max_length=500)
+    note_date = models.DateTimeField()
+
+    def __str__(self):
+        return '{}: {}'.format(self.note_date, self.note_content)
