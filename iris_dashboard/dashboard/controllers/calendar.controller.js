@@ -12,8 +12,9 @@ Iris
         //     $scope.noteBox = ''
         // }
 
-        $scope.addToCalendar = function(noteInfo){
+        $scope.addToCalendar = function(noteInfo, selectedDate){
             console.log(noteInfo)
+            console.log(selectedDate)
         }
 
         $scope.changeTo = 'Hungarian';
@@ -170,6 +171,7 @@ Iris
                 var date = data.date,
                   mode = data.mode;
                 return mode === 'day' && (date.getDay() === 0 || date.getDay() === 6);
+                // return mode === 'day' && (date.getDay() === 0 || date.getDay() === 6);
               }
 
               $scope.toggleMin = function() {
@@ -181,6 +183,7 @@ Iris
 
               $scope.open1 = function() {
                 $scope.popup1.opened = true;
+
                 console.log("this opened")
               };
 
@@ -188,9 +191,12 @@ Iris
                 $scope.popup2.opened = true;
               };
 
-              $scope.setDate = function(year, month, day) {
-                $scope.dt = new Date(year, month, day);
-              };
+            //   $scope.setDate = function(selectedDate) {
+            //   $scope.setDate = function(year, month, day) {
+                // $scope.dt = new Date(year, month, day);
+            //     $scope.dt = selectedDate;
+            //     return $scope.dt
+            //   };
 
               $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
               $scope.format = $scope.formats[0];
