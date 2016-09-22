@@ -6,6 +6,8 @@ body {
   width: 100%;
   height: 100%;
   font-family: 'Open Sans', sans-serif;
+  font-family: 'Poppins', sans-serif;
+  /*font-family: 'Amatic SC', cursive;*/
   font-weight: 400;
   /*background: #141E30; /* fallback for old browsers */*/
   /*background: -webkit-linear-gradient(to left, #141E30 , #243B55); /* Chrome 10-25, Safari 5.1-6 */*/
@@ -13,25 +15,127 @@ body {
 }
 
 #charts {
-  max-width: 800px;
+  max-width: 900px;
   max-height: 300px;
+  margin-right: 15%;
+}
+
+#calendarContainer {
+  /*max-width: 70%;*/
+  /*max-height: 400px;*/
+  /*display: block;*/
+  margin-right: 5%;
 }
 
 #calendarDisplay {
   max-width: 500px;
-  max-height: 450px;
-  display: block;
-  margin-right: 5%;
+  max-height: 700px;
+  padding-top: 15%;
+  padding-bottom: 5%;
+  /*display: block;*/
+  /*margin: auto;*/
 }
 
-#calendarContainer {
-  max-width: 400px;
-  max-height: 400px;
-  display: block;
-  margin-right: 5%;
-}
 
 #miniCalendar {
-  display: block;
+  /*display: block;*/
   padding-top: 10%;
+}
+
+/**********************************************
+Logo Styling
+***********************************************/
+.irisLogo {
+  font-size: 4em;
+  text-align: center;
+}
+
+/**********************************************
+Input and Button Styling
+***********************************************/
+
+#dateBox {
+  width: 150px;
+}
+
+textarea {
+    border: 2px solid rgba(6, 119, 191, 0.52);
+    border-radius: 0.5em;
+    box-shadow:
+      inset 0 0 8px  rgba(0,0,0,0.1),
+            0 0 16px rgba(0,0,0,0.1);
+    padding: 15px;
+    background: rgba(255, 255, 255, 0);
+    margin: 0 0 10px 0;
+}
+
+/**********************************************
+Make Tab Nav Bar Align to the left of the page
+***********************************************/
+
+.tabs-left > .nav-tabs {
+  border-bottom: 0;
+  width: 15%;
+}
+
+.tab-content > .tab-pane,
+.pill-content > .pill-pane {
+  display: none;
+}
+
+.tab-content > .active,
+.pill-content > .active {
+  display: block;
+}
+
+.tabs-left > .nav-tabs > li {
+  float: none;
+}
+
+.tabs-left > .nav-tabs {
+  float: left;
+  margin-right: 19px;
+  border-right: 1px solid #ddd;
+}
+
+.tabs-left > .nav-tabs > li > a {
+  min-width: 150px;
+  min-height: 60px;
+  margin-right: 0;
+  margin-bottom: 3px;
+  margin-right: -1px;
+  -webkit-border-radius: 4px 0 0 4px;
+     -moz-border-radius: 4px 0 0 4px;
+          border-radius: 4px 0 0 4px;
+}
+
+.tabs-left > .nav-tabs > li > a:hover,
+.tabs-left > .nav-tabs > li > a:focus {
+  border-color: #eeeeee #dddddd #eeeeee #eeeeee;
+}
+
+.tabs-left > .nav-tabs .active > a,
+.tabs-left > .nav-tabs .active > a:hover,
+.tabs-left > .nav-tabs .active > a:focus {
+  border-color: #ddd transparent #ddd #ddd;
+  *border-right-color: #ffffff;
+}
+
+
+/*NavBar additions*/
+
+/*.tabNav {
+
+}*/
+
+.tabNavBottom {
+  /*border-style: solid;*/
+  /*border-right: thick double #ff0000;*/
+  border-radius: 4px 0 0 4px;
+  border-color: #ddd;
+  height: 100vh;
+  /*min-height: 800px;*/
+  /*width: 150px;*/
+  /*overflow:auto;*/
+  /*z-index: -1;*/
 }
