@@ -5,7 +5,7 @@ Iris
         '$timeout',
         'RootFactory',
     function($scope, $http, $timeout, RootFactory){
-        $scope.title = "Charts";
+        $scope.title = "Sensor Charts";
 
         RootFactory.getApiRoot()
             .then(

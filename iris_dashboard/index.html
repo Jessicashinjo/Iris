@@ -12,7 +12,7 @@
     <body>
         <div ng-app='Iris'>
             <!-- <h1>Iris</h1> -->
-            <div ng-include="'dashboard/partials/navbar.html'"></div>
+            <div ng-include="'dashboard/partials/navbar.html'" ng-controller="NavBarCtrl"></div>
             <!-- <div ng-include="'dashboard/partials/calendar.html'" ng-controller="CalendarCtrl"></div> -->
             <div ng-view></div>
         </div>
@@ -31,6 +31,7 @@
       <script src="dashboard/dashboard.js"></script>
       <script src="dashboard/factories/rootFactory.js"></script>
       <script src="dashboard/configs/dashboard.configs.js"></script>
+      <script src="dashboard/controllers/navbar.controller.js"></script>
       <script src="dashboard/controllers/chart.controller.js"></script>
       <script src="dashboard/controllers/calendar.controller.js"></script>
     </body>
