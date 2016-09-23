@@ -7,11 +7,7 @@ body {
   height: 100%;
   font-family: 'Open Sans', sans-serif;
   font-family: 'Poppins', sans-serif;
-  /*font-family: 'Amatic SC', cursive;*/
   font-weight: 400;
-  /*background: #141E30; /* fallback for old browsers */*/
-  /*background: -webkit-linear-gradient(to left, #141E30 , #243B55); /* Chrome 10-25, Safari 5.1-6 */*/
-  /*background: linear-gradient(to left, #141E30 , #243B55); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */*/
 }
 
 #charts {
@@ -21,9 +17,6 @@ body {
 }
 
 #calendarContainer {
-  /*max-width: 70%;*/
-  /*max-height: 400px;*/
-  /*display: block;*/
   margin-right: 5%;
 }
 
@@ -32,13 +25,10 @@ body {
   max-height: 700px;
   padding-top: 15%;
   padding-bottom: 5%;
-  /*display: block;*/
-  /*margin: auto;*/
 }
 
 
 #miniCalendar {
-  /*display: block;*/
   padding-top: 10%;
 }
 
@@ -55,7 +45,7 @@ Input and Button Styling
 ***********************************************/
 
 #dateBox {
-  width: 150px;
+  width: 175px;
 }
 
 textarea {
@@ -104,9 +94,7 @@ Make Tab Nav Bar Align to the left of the page
   margin-right: 0;
   margin-bottom: 3px;
   margin-right: -1px;
-  -webkit-border-radius: 4px 0 0 4px;
-     -moz-border-radius: 4px 0 0 4px;
-          border-radius: 4px 0 0 4px;
+  border-radius: 4px 0 0 4px;
 }
 
 .tabs-left > .nav-tabs > li > a:hover,
@@ -121,21 +109,8 @@ Make Tab Nav Bar Align to the left of the page
   *border-right-color: #ffffff;
 }
 
-
-/*NavBar additions*/
-
-/*.tabNav {
-
-}*/
-
 .tabNavBottom {
-  /*border-style: solid;*/
-  /*border-right: thick double #ff0000;*/
   border-radius: 4px 0 0 4px;
   border-color: #ddd;
   height: 100vh;
-  /*min-height: 800px;*/
-  /*width: 150px;*/
-  /*overflow:auto;*/
-  /*z-index: -1;*/
 }
