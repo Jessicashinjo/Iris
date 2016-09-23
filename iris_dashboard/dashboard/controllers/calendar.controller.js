@@ -1,9 +1,6 @@
 Iris
     .controller('CalendarCtrl', function($scope,$http,$timeout,$compile,uiCalendarConfig,irisAPIUrl,RootFactory) {
         let date = new Date();
-        let d = date.getDate();
-        let m = date.getMonth();
-        let y = date.getFullYear();
         // Holds the value of the textbox for creating notes
         $scope.noteBox = '';
         // contains each note/event displayed on the calendar
@@ -36,16 +33,16 @@ Iris
         $scope.addToCalendar = function(noteInfo, selectedDate){
             // sends event/note to the Iris api
             $http.post(`${irisAPIUrl}/notes/`, {note_content: noteInfo,note_date: selectedDate})
-              .then(res => {
-                  // updates calendar locally
-                  $scope.events.push({title: res.data.note_content, start: new Date(res.data.note_date), allDay: true})
-                $timeout()
-              });
+                .then(res => {
+                    // updates calendar locally
+                    $scope.events.push({title: res.data.note_content, start: new Date(res.data.note_date), allDay: true})
+                    $timeout()
+                });
         }
 
         // Updates the calendar every time the calendar view is switched
         $scope.eventsF = function (start, end, timezone, callback) {
-          callback($scope.events);
+            callback($scope.events);
         };
 
         // populates current event selected box onClick
@@ -54,91 +51,77 @@ Iris
             $scope.eventDate = date.start._i.toLocaleDateString();
         };
 
-        /* remove event */
+        // remove calendar event
         $scope.remove = function(index) {
-          $scope.events.splice(index,1);
+            $scope.events.splice(index,1);
         };
 
-        /* config object */
+        // mini calendar configuration details
         $scope.uiConfig = {
-          calendar:{
-            height: 450,
-            editable: true,
-            header:{
-              left: 'title',
-              center: '',
-              right: 'today prev,next'
-            },
+            calendar:{
+                height: 450,
+                editable: true,
+                header:{
+                    left: 'title',
+                    center: '',
+                    right: 'today prev,next'
+                },
             eventClick: $scope.populateEventWindow,
-            // eventDrop: $scope.alertOnDrop,
-            // eventResize: $scope.alertOnResize,
-            // eventRender: $scope.eventRender,
-          }
+            }
         };
 
-        /* event sources array*/
+        // event sources array
         $scope.eventSources = [$scope.events, $scope.eventsF];
-        // $scope.eventSources2 = [$scope.calEventsExt, $scope.eventsF, $scope.events];
-
 
         // Mini popout calendar and text input box
-              $scope.today = function() {
-                $scope.dt = new Date();
-              };
-              $scope.today();
+        $scope.today = function() {
+            $scope.dt = new Date();
+        };
+        $scope.today();
 
-              $scope.clear = function() {
-                $scope.dt = null;
-              };
+        // clears the note textbox
+        $scope.clear = function() {
+            $scope.dt = null;
+        };
 
-              $scope.inlineOptions = {
-                customClass: getDayClass,
-                minDate: new Date(),
-                showWeeks: true
-              };
+        $scope.inlineOptions = {
+            customClass: getDayClass,
+            minDate: new Date(),
+        };
 
-              $scope.dateOptions = {
-                formatYear: 'yy',
-                maxDate: new Date(2020, 5, 22),
-                minDate: new Date(),
-                startingDay: 1
-              };
+        $scope.dateOptions = {
+            formatYear: 'yy',
+            maxDate: new Date(2020, 5, 22),
+            minDate: new Date(),
+            startingDay: 1
+        };
 
-              $scope.toggleMin = function() {
-                $scope.inlineOptions.minDate = $scope.inlineOptions.minDate ? null : new Date();
-                $scope.dateOptions.minDate = $scope.inlineOptions.minDate;
-              };
+        // Allows past dates to be selected on mini calendar
+        $scope.toggleMin = function() {
+            $scope.inlineOptions.minDate = $scope.inlineOptions.minDate ? null : new Date();
+            $scope.dateOptions.minDate = $scope.inlineOptions.minDate;
+        };
+        $scope.toggleMin();
 
-              $scope.toggleMin();
+        // Opens the mini popout calendar
+        $scope.openMiniCalendar = function() {
+            $scope.miniCalendar.opened = true;
+        };
 
-              $scope.open1 = function() {
-                $scope.popup1.opened = true;
+        // Several options for formatting the date in the mini calendar box
+        $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy',
+                        'shortDate'];
+        $scope.format = $scope.formats[0];
 
-                console.log("this opened")
-              };
+        $scope.miniCalendar = {
+            opened: false
+        };
 
-              $scope.open2 = function() {
-                $scope.popup2.opened = true;
-              };
+        // Get current day
+        function getDayClass(data) {
+            let date = data.date,
+            mode = data.mode;
 
-              $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
-              $scope.format = $scope.formats[0];
-              $scope.altInputFormats = ['M!/d!/yyyy'];
-
-              $scope.popup1 = {
-                opened: false
-              };
-
-              var tomorrow = new Date();
-              tomorrow.setDate(tomorrow.getDate() + 1);
-              var afterTomorrow = new Date();
-              afterTomorrow.setDate(tomorrow.getDate() + 1);
-
-              function getDayClass(data) {
-                var date = data.date,
-                  mode = data.mode;
-
-                return '';
-              }
-            // });
+            return '';
+        }
     })
