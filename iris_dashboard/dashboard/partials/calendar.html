@@ -1,66 +1,30 @@
 <div class="row">
-  <div id="calendarContainer" class="pull-right col-md-8">
-    <div class="row">
-        <div class="col-md-6">
-            <div id="calendarDisplay" ui-calendar="uiConfig.calendar" class="span8 calendar" ng-model="eventSources">
+    <div id="calendarContainer" class="pull-right col-md-8">
+        <div class="row">
+            <div class="col-md-6">
+                <div id="calendarDisplay" ui-calendar="uiConfig.calendar" class="span8 calendar" ng-model="eventSources">
+                </div>
+                <pre>Selected Event: {{eventDate}} <em>{{ eventTitle }}</em></pre>
             </div>
-            <pre>Selected Event: {{eventDate}} <em>{{ eventTitle }}</em></pre>
-        </div>
-        <div class="col-md-1"></div>
-        <div id="miniCalendar" class="col-md-5">
-            <style>
-              .full button span {
-                background-color: limegreen;
-                border-radius: 32px;
-                color: black;
-              }
-              .partially button span {
-                background-color: orange;
-                border-radius: 32px;
-                color: black;
-              }
-            </style>
+            <div class="col-md-1">
+            </div>
+            <div id="miniCalendar" class="col-md-5">
             <div>
-
-
-                <h4>Add a note to your calendar:</h4>
-                <div class="row">
-                  <div class="col-md-6">
+            <h4>Add a note to your calendar:</h4>
+            <div class="row">
+                <div class="col-md-6">
                     <p class="input-group">
-                      <input type="text" id="dateBox" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
-                      <span class="input-group-btn">
-                        <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
-                      </span>
-                      <h4>Type your note here:</h4>
-                      <textarea rows="2" cols="50" placeholder="Ex. Added fertilizer" ng-model="noteBox"></textarea>
-                      <!-- <input type="textbox" ng-model="noteBox" placeholder="Ex. Added fertilizer" /> -->
-                      <button type="button" class="btn btn-sm btn-info" ng-click="addToCalendar(noteBox, dt)">Add to Calendar</button>
-                      <button type="button" class="btn btn-sm btn-danger" ng-click="noteBox=''">Clear</button>
+                        <input type="text" id="dateBox" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
+                        <h4>Type your note here:</h4>
+                        <textarea rows="2" cols="50" placeholder="Ex. Added fertilizer" ng-model="noteBox"></textarea>
+                        <button type="button" class="btn btn-sm btn-info" ng-click="addToCalendar(noteBox, dt)">Add to Calendar</button>
+                        <button type="button" class="btn btn-sm btn-danger" ng-click="noteBox=''">Clear</button>
                     </p>
-                  </div>
-
-                  <!-- <div class="col-md-6">
-                    <p class="input-group">
-                      <input type="text" class="form-control" uib-datepicker-popup ng-model="dt" is-open="popup2.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
-                      <span class="input-group-btn">
-                        <button type="button" class="btn btn-default" ng-click="open2()"><i class="glyphicon glyphicon-calendar"></i></button>
-                      </span>
-                    </p>
-                  </div> -->
-                <!-- </div> -->
-                <!-- <div class="row">
-                  <div class="col-md-6">
-                    <label>Format: <span class="muted-text">(manual alternate <em>{{altInputFormats[0]}}</em>)</span></label> <select class="form-control" ng-model="format" ng-options="f for f in formats"><option></option></select>
-                  </div>
-                </div> -->
-
-                <!-- <hr /> -->
-                <!-- <button type="button" class="btn btn-sm btn-info" ng-click="today()">Today</button> -->
-                <!-- <button type="button" class="btn btn-sm btn-default" ng-click="setDate(2009, 7, 24)">2009-08-24</button> -->
-                <!-- <button type="button" class="btn btn-sm btn-danger" ng-click="setDate(dt)">date</button> -->
-                <!-- <button type="button" class="btn btn-sm btn-default" ng-click="toggleMin()" uib-tooltip="After today restriction">Min date</button> -->
-            <!-- </div> -->
+                </div>
+            </div>
         </div>
-      </div>
-  </div>
+    </div>
 </div>

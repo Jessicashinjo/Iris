@@ -9,61 +9,63 @@ Iris
 
         RootFactory.getApiRoot()
             .then(
+            // root is an object with each sensor url & notes as a key
             root => {
                 $http.get(`${root.moisture}`)
                     .then(res => {
-                        // console.log("moisture res: ", res.data );
                         $scope.moisture = res.data;
+                        // populates the labels for the moisture chart
                         $scope.moistureDates = getLabels(res.data);
+                        // populates chart with moisture value readings
                         $scope.moistureValues = getMoistureValues(res.data);
+                        // creates moisture chart
                         moistureChart();
-                        // console.log("moistureDates", $scope.moistureDates);
-                        // console.log("moistureValues", $scope.moistureValues);
                 });
                 $http.get(`${root.temperature}`)
                     .then(res => {
-                        // console.log("temperature res: ", res.data );
                         $scope.temperature = res.data
+                        // populates the labels for the temperature chart
                         $scope.temperatureDates = getLabels(res.data)
+                        // populates chart with temperature value readings
                         $scope.temperatureValues = getTemperatureValues(res.data);
+                        // creates temperature chart
                         temperatureChart();
                     });
                 $http.get(`${root.light}`)
                     .then(res => {
-                        // console.log("light res: ", res.data );
                         $scope.light = res.data
+                        // populates the labels for the light chart
                         $scope.lightDates = getLabels(res.data)
+                        // populates chart with light value readings
                         $scope.lightValues = getLightValues(res.data);
+                        // creates light chart
                         lightChart();
-                        // console.log("light values", $scope.lightValues)
                     });
             $timeout();
           },
           err => console.log('error', err)
-          ).then(
-            $timeout //forces scope apply to DOM - reapply everything
-          );
+          )
 
         // Takes a full date with YY/MM/DD T HH/MM/SS Z and converts it to
         // MM/DD/YY format
-        function stringToDate(s)  {
-            s = s.split(/[-:TZ]/);
-            return new Date(s[0], s[1]-1, s[2], s[3], s[4], s[5]).toLocaleDateString();
+        function stringToDate(date_string)  {
+            let ds = date_string.split(/[-:TZ]/);
+            return new Date(ds[0], ds[1]-1, ds[2],
+                            ds[3], ds[4], ds[5])
+                            .toLocaleDateString();
         }
 
-        // Takes the date for each sensor event, checks to see if it's in array
-        // if not the date is pushed to the array and then returns the array
+        // Takes the date for each sensor event and puts it into an array
         function getLabels(sensorEvents) {
             sensorDate = []
-            console.log("sensor Events", sensorEvents)
             sensorEvents.forEach((item) => {
-                // if (sensorDate.find(() => item) === undefined){
-                    sensorDate.push(stringToDate(item.published_date))
-                // }
+                sensorDate.push(stringToDate(item.published_date))
             })
             return sensorDate;
         }
 
+        // Gets values from sensor and puts it into an array to be populated
+        // as chart values
         function getMoistureValues(sensorEvents) {
             sensorValues = []
             sensorEvents.forEach((item) => {
@@ -88,10 +90,11 @@ Iris
 
         // Displays a chart documenting Moisture values/day using ChartJS
         function moistureChart() {
-            var ctx = document.getElementById("moistureChart");
-            var data = {
-                // Unique dates for sensor events
+            let ctx = document.getElementById("moistureChart");
+            let data = {
+                // Dates for sensor events
                 labels: $scope.moistureDates,
+                // All of the information needed to produce 1 line for the chart
                 datasets: [
                     {
                         label: "Moisture Value",
@@ -119,19 +122,20 @@ Iris
                 ]
             };
 
-
-            var myLineChart = new Chart(ctx, {
+            // displays chart canvas
+            let myLineChart = new Chart(ctx, {
                 type: 'line',
                 data: data,
-                // options: options,
             });
         }
 
+        // Displays a chart documenting Temperature values/day using ChartJS
         function temperatureChart() {
-            var ctx = document.getElementById("temperatureChart");
-            var data = {
-                // Unique dates for sensor events
+            let ctx = document.getElementById("temperatureChart");
+            let data = {
+                // dates for sensor events
                 labels: $scope.temperatureDates,
+                // All of the information needed to produce 1 line for the chart
                 datasets: [
                     {
                         label: "Temperature Value",
@@ -159,18 +163,20 @@ Iris
                 ]
             };
 
-
-            var myLineChart = new Chart(ctx, {
+            // displays chart canvas
+            let myLineChart = new Chart(ctx, {
                 type: 'line',
                 data: data,
-                // options: options,
             });
         }
+
+        // Displays a chart documenting Light values/day using ChartJS
         function lightChart() {
-            var ctx = document.getElementById("lightChart");
-            var data = {
-                // Unique dates for sensor events
+            let ctx = document.getElementById("lightChart");
+            let data = {
+                // dates for sensor events
                 labels: $scope.lightDates,
+                // All of the information needed to produce 1 line for the chart
                 datasets: [
                     {
                         label: "Light Value",
@@ -198,11 +204,10 @@ Iris
                 ]
             };
 
-
-            var myLineChart = new Chart(ctx, {
+            // displays chart canvas
+            let myLineChart = new Chart(ctx, {
                 type: 'line',
                 data: data,
-                // options: options,
             });
         }
 
@@ -210,7 +215,3 @@ Iris
 
 
     }]);
-
-
-// example light sensor response
-// [{"id":1,"device_id":"270023001847353236343033","event_type":"Light","published_date":"2016-09-15T14:26:53.891000Z","light_value":"3773"},{"id":2,"device_id":"270023001847353236343033","event_type":"Light","published_date":"2016-09-15T14:26:53.891000Z","light_value":"3773"}]

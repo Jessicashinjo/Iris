@@ -12,9 +12,7 @@
     </head>
     <body>
         <div ng-app='Iris'>
-            <!-- <h1>Iris</h1> -->
-            <div ng-include="'dashboard/partials/navbar.html'" ng-controller="NavBarCtrl"></div>
-            <!-- <div ng-include="'dashboard/partials/calendar.html'" ng-controller="CalendarCtrl"></div> -->
+            <div ng-include="'dashboard/partials/navbar.html'"></div>
             <div ng-view></div>
         </div>
 
@@ -25,14 +23,11 @@
       <script type="text/javascript" src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
       <script type="text/javascript" src="bower_components/angular-ui-calendar/src/calendar.js"></script>
       <script type="text/javascript" src="bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
-      <!-- <script type="text/javascript" src="bower_components/fullcalendar/dist/gcal.js"></script> -->
-      <!-- <script src="bower_components/angular/angular.min.js"></script> -->
       <script src="bower_components/angular-route/angular-route.min.js"></script>
       <script src="node_modules/chart.js/dist/Chart.bundle.min.js"></script>
       <script src="dashboard/dashboard.js"></script>
       <script src="dashboard/factories/rootFactory.js"></script>
       <script src="dashboard/configs/dashboard.configs.js"></script>
-      <script src="dashboard/controllers/navbar.controller.js"></script>
       <script src="dashboard/controllers/chart.controller.js"></script>
       <script src="dashboard/controllers/calendar.controller.js"></script>
     </body>
