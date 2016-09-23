@@ -4,17 +4,17 @@
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <title>Iris</title>
-      <!-- <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css"> -->
       <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
       <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Poppins" rel="stylesheet">
       <link rel="stylesheet" href="bower_components/fullcalendar/dist/fullcalendar.css"/>
       <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <div ng-app='Iris'>
-            <div ng-include="'dashboard/partials/navbar.html'"></div>
-            <div ng-view></div>
-        </div>
+      <div ng-app='Iris'>
+          <!-- Includes navbar on every page -->
+          <div ng-include="'dashboard/partials/navbar.html'"></div>
+          <div ng-view></div>
+      </div>
 
       <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
       <script type="text/javascript" src="bower_components/moment/min/moment.min.js"></script>

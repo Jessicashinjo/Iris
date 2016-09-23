@@ -97,7 +97,7 @@ Iris
                 // All of the information needed to produce 1 line for the chart
                 datasets: [
                     {
-                        label: "Moisture Value",
+                        label: "Moisture Value is healthy at 2050",
                         fill: false,
                         lineTension: 0.1,
                         backgroundColor: "rgba(75,192,192,0.4)",
@@ -138,7 +138,7 @@ Iris
                 // All of the information needed to produce 1 line for the chart
                 datasets: [
                     {
-                        label: "Temperature Value",
+                        label: "Temperature Value is in Farenheit",
                         fill: false,
                         lineTension: 0.1,
                         backgroundColor: "rgba(79, 224, 189, 0.4)",
@@ -179,7 +179,7 @@ Iris
                 // All of the information needed to produce 1 line for the chart
                 datasets: [
                     {
-                        label: "Light Value",
+                        label: "Light Value below 1300 is Sunny",
                         fill: false,
                         lineTension: 0.1,
                         backgroundColor: "rgba(249, 131, 9, 0.78)",

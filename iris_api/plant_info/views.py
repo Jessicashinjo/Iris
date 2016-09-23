@@ -15,6 +15,10 @@ class MoistureSensorView(viewsets.ModelViewSet):
     serializer_class = MoistureSensorSerializer
 
     def get_queryset(self):
+        '''
+        Designed for v2. User can type a day as an int (ex. 7) and the User
+        will receive all history for the sensor since that day.
+        '''
         queryset = MoistureSensor.objects.all()
         since_date = self.request.query_params.get('since_day', None)
         if since_date is not None:
@@ -27,6 +31,10 @@ class TemperatureSensorView(viewsets.ModelViewSet):
     serializer_class = TemperatureSensorSerializer
 
     def get_queryset(self):
+        '''
+        Designed for v2. User can type a day as an int (ex. 7) and the User
+        will receive all history for the sensor since that day.
+        '''
         queryset = TemperatureSensor.objects.all()
         since_date = self.request.query_params.get('since_day', None)
         if since_date is not None:
@@ -39,6 +47,10 @@ class LightSensorView(viewsets.ModelViewSet):
     serializer_class = LightSensorSerializer
 
     def get_queryset(self):
+        '''
+        Designed for v2. User can type a day as an int (ex. 7) and the User
+        will receive all history for the sensor since that day.
+        '''
         queryset = LightSensor.objects.all()
         since_date = self.request.query_params.get('since_day', None)
         if since_date is not None:
@@ -47,6 +59,7 @@ class LightSensorView(viewsets.ModelViewSet):
         return queryset
 
 class NotesView(viewsets.ModelViewSet):
+    ''' Model for notes which populate the user's calendar '''
     model = Notes
     serializer_class = NotesSerializer
     queryset = Notes.objects.all()
