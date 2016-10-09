@@ -21,7 +21,7 @@ class Sensor(models.model):
         return '{}: {}'.format(self.event_type, self.sensor_value)
 
 
-class CalendarNotes(models.Model):
+class CalendarNote(models.Model):
     ''' A note or event created by a User
 
     Arguments:
