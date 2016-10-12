@@ -2,7 +2,7 @@ from django.db import models
 from .utility import UtilityFunctions
 
 
-class Sensor(models.model):
+class Sensor(models.Model):
     ''' Moisture Sensor
 
     Arguments:
