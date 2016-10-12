@@ -20,6 +20,9 @@ class SensorView(viewsets.ModelViewSet):
         will receive all history for the sensor since that day.
         '''
         queryset = Sensor.objects.all()
+        sensor_type = self.request.query_params.get('sensor_type')
+        if sensor_type is not None:
+            queryset = queryset.filter(event_type=sensor_type)
         since_date = self.request.query_params.get('since_day', None)
         if since_date is not None:
             compare_date = timezone.now() - timedelta(days=int(since_date))
