@@ -1,5 +1,4 @@
 from django.db import models
-from .utility import UtilityFunctions
 
 
 class Sensor(models.Model):
