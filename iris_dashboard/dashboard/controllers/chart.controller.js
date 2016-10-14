@@ -11,33 +11,33 @@ Iris
             .then(
             // root is an object with each sensor url & notes as a key
             root => {
-                $http.get(`${root.moisture}`)
+                $http.get(`${root.sensors}?sensor_type=Moisture`)
                     .then(res => {
                         $scope.moisture = res.data;
                         // populates the labels for the moisture chart
                         $scope.moistureDates = getLabels(res.data);
                         // populates chart with moisture value readings
-                        $scope.moistureValues = getMoistureValues(res.data);
+                        $scope.moistureValues = getSensorValues(res.data);
                         // creates moisture chart
                         moistureChart();
-                });
-                $http.get(`${root.temperature}`)
+                    });
+                $http.get(`${root.sensors}?sensor_type=Temperature`)
                     .then(res => {
                         $scope.temperature = res.data
                         // populates the labels for the temperature chart
                         $scope.temperatureDates = getLabels(res.data)
                         // populates chart with temperature value readings
-                        $scope.temperatureValues = getTemperatureValues(res.data);
+                        $scope.temperatureValues = getSensorValues(res.data);
                         // creates temperature chart
                         temperatureChart();
                     });
-                $http.get(`${root.light}`)
+                $http.get(`${root.sensors}?sensor_type=Light`)
                     .then(res => {
                         $scope.light = res.data
                         // populates the labels for the light chart
                         $scope.lightDates = getLabels(res.data)
                         // populates chart with light value readings
-                        $scope.lightValues = getLightValues(res.data);
+                        $scope.lightValues = getSensorValues(res.data);
                         // creates light chart
                         lightChart();
                     });
@@ -66,24 +66,10 @@ Iris
 
         // Gets values from sensor and puts it into an array to be populated
         // as chart values
-        function getMoistureValues(sensorEvents) {
+        function getSensorValues(sensorEvents) {
             sensorValues = []
             sensorEvents.forEach((item) => {
-                sensorValues.push(item.moisture_value)
-            })
-            return sensorValues
-        }
-        function getTemperatureValues(sensorEvents) {
-            sensorValues = []
-            sensorEvents.forEach((item) => {
-                sensorValues.push(item.temperature_value)
-            })
-            return sensorValues
-        }
-        function getLightValues(sensorEvents) {
-            sensorValues = []
-            sensorEvents.forEach((item) => {
-                sensorValues.push(item.light_value)
+                sensorValues.push(item.sensor_value)
             })
             return sensorValues
         }

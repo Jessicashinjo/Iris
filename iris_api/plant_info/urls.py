@@ -1,12 +1,10 @@
 from rest_framework import routers
 from django.conf.urls import url, include
-from plant_info import views
+from plant_info.views import SensorView, CalendarNoteView
 
 router = routers.DefaultRouter()
-router.register(r'moisture', views.MoistureSensorView, base_name='moisture-list')
-router.register(r'temperature', views.TemperatureSensorView, base_name='temperature-list')
-router.register(r'light', views.LightSensorView, base_name='light-list')
-router.register(r'notes', views.NotesView)
+router.register(r'sensors', SensorView, base_name="sensor")
+router.register(r'notes', CalendarNoteView)
 
 urlpatterns = [
     url(r'^', include(router.urls)),

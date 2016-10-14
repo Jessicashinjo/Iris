@@ -1,23 +1,20 @@
 from rest_framework import serializers
 
-from plant_info.models import MoistureSensor, TemperatureSensor, LightSensor, Notes
+from plant_info.models import Sensor, CalendarNote
 
-class MoistureSensorSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = MoistureSensor
-        fields = ('id', 'device_id', 'event_type', 'published_date', 'moisture_value')
 
-class TemperatureSensorSerializer(serializers.HyperlinkedModelSerializer):
+class SensorSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
-        model = TemperatureSensor
-        fields = ('id', 'device_id', 'event_type', 'published_date', 'temperature_value')
+        model = Sensor
+        fields = (
+            'id',
+            'device_id',
+            'event_type',
+            'published_date',
+            'sensor_value')
 
-class LightSensorSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = LightSensor
-        fields = ('id', 'device_id', 'event_type', 'published_date', 'light_value')
 
-class NotesSerializer(serializers.HyperlinkedModelSerializer):
+class CalendarNoteSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
-        model = Notes
+        model = CalendarNote
         fields = ('id', 'note_content', 'note_date')
